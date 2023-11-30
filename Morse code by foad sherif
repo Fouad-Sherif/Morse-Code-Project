@@ -9,3 +9,20 @@ morse = {
     'U': '..-', 'V': '...-', 'W': '.--', 'X': '-..-', 'Y': '-.--', 
     'Z': '--..'
 }
+
+def english_to_morse(input_text):
+    input_text = input_text.upper()
+    
+    if not input_text.replace(" ", "").isalpha():
+        raise MorseError("Error: Input text should only contain letters and spaces.")
+    
+    result = []
+    for letter in input_text:
+        if letter in morse:
+            result.append(morse[letter])
+        elif letter == " ":
+            result.append("/")
+        else:
+                raise MorseError("the letter is not in the dictionary pls enter only alphabtes from a to z")
+    return ' '.join(result)
+
