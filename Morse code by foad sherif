@@ -26,3 +26,20 @@ def english_to_morse(input_text):
                 raise MorseError("the letter is not in the dictionary pls enter only alphabtes from a to z")
     return ' '.join(result)
 
+
+
+def morse_to_english(input_morse):
+    if not all(char in set(" .-") for char in input_morse):
+        raise MorseError("Error: Input text should only contain Morse code characters (dot, dash, and space).")
+    
+    words = input_morse.split("  ")  
+    result = []
+    for word in words:
+        letters = word.split(" ")
+        for letter in letters:
+            for key, value in morse.items():
+                if value == letter:
+                    result.append(key)
+        result.append(' ')
+    return ''.join(result).strip()
+
