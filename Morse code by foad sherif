@@ -43,3 +43,34 @@ def morse_to_english(input_morse):
         result.append(' ')
     return ''.join(result).strip()
 
+def main():
+    while True:
+        print("Menu:")
+        print("1. Enter a text to encrypt: ")
+        print("2. Enter a text to decrypt: ")
+        print("3. Exit")
+        
+        choice = input("Enter your choice (1, 2, or 3): ")
+        
+        if choice == '1':
+            text_to_translate = input("Enter a text to encrypt: ")
+            try:
+                result = english_to_morse(text_to_translate)
+                print(f"Morse Code: {result}")
+            except MorseError as e:
+                print(e)
+        elif choice == '2':
+            morse_to_translate = input("Enter a text to decrypt: ")
+            try:
+                result = morse_to_english(morse_to_translate)
+                print(f"English: {result}")
+            except MorseError as e:
+                print(e)
+        elif choice == '3':
+            print("Exiting the program. Goodbye!")
+            break
+        else:
+            print("Invalid choice. Please enter 1, 2, or 3.")
+
+if __name__ == "__main__":
+    main()
